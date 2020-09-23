@@ -139,7 +139,9 @@ while main != 0:
         price = list(set(price))
         my_dict = {'Название': name, 'цена': price, 'количество': lot, 'ед': unit}
         print("Словарь: ", my_dict)
+    #     Пункт для завершения цикла
     elif zadanie == 0:
         main = zadanie
+    #     в случае ввода пункта которого нет в меню
     else:
         print("Такого задания нет")
