@@ -48,10 +48,31 @@ while main != 0:
         print(list_my)
 # 3. Пользователь вводит месяц в виде целого числа от 1 до 12. Сообщить к какому времени года относится месяц
 # (зима, весна, лето, осень). Напишите решения через list и через dict.
-#     elif zadanie == 3:
+    elif zadanie == 3:
+        month = int(input('Введите месяц в виде целого числа от 1 до 12: '))
+        month_list = ("зима", "весна", "лето", "осень")
+        if month == 1 or month == 2 or month == 12:
+            print(month_list[0])
+        elif month == 3 or month == 4 or month == 5:
+            print(month_list[1])
+        elif month == 6 or month == 7 or month == 8:
+            print(month_list[2])
+        elif month == 9 or month == 10 or month == 11:
+            print(month_list[3])
+        else:
+            print("Такой месяц не существует.")
+        month_dict = {1: "зима", 2: "зима", 12: "зима", 3: "весна", 4: "весна", 5: "весна", 6: "лето", 7: "лето",
+                      8: "лето", 9: "осень", 10: "осень", 11: "осень"}
+        print(month_dict.get(month))
 # 4. Пользователь вводит строку из нескольких слов, разделённых пробелами. Вывести каждое слово с новой строки.
     # Строки необходимо пронумеровать. Если в слово длинное, выводить только первые 10 букв в слове.
-#     elif zadanie == 4:
+    elif zadanie == 4:
+        string = input('Введите строку из нескольких слов, разделенных пробелами: ')
+        string = list(string.split())
+        number = 1
+        for item in string:
+            print(number, item[0:10])
+            number += 1
 # 5. Реализовать структуру «Рейтинг», представляющую собой не возрастающий набор натуральных чисел.
 # У пользователя необходимо запрашивать новый элемент рейтинга. Если в рейтинге существуют элементы с одинаковыми
 # значениями, то новый элемент с тем же значением должен разместиться после них.
@@ -60,7 +81,16 @@ while main != 0:
 # Пользователь ввел число 8. Результат: 8, 7, 5, 3, 3, 2.
 # Пользователь ввел число 1. Результат: 7, 5, 3, 3, 2, 1.
 # Набор натуральных чисел можно задать непосредственно в коде, например, my_list = [7, 5, 3, 3, 2].
-#     elif zadanie == 5:
+    elif zadanie == 5:
+        my_list = [7, 5, 3, 3, 2]
+        print(my_list)
+        user_number = int(input('Введите новый элемент натуральное число: '))
+        pos_number = 0
+        for item in my_list:
+            if item > user_number:
+                pos_number = my_list.index(item) + 1
+        my_list.insert(pos_number, user_number)
+        print(my_list)
 # 6. * Реализовать структуру данных «Товары». Она должна представлять собой список кортежей. Каждый кортеж хранит
 # информацию об отдельном товаре. В кортеже должно быть два элемента — номер товара и словарь с параметрами
 # (характеристиками товара: название, цена, количество, единица измерения). Структуру нужно сформировать программно,
@@ -80,7 +110,35 @@ while main != 0:
 # “количество”: [5, 2, 7],
 # “ед”: [“шт.”]
 # }
-#     elif zadanie == 6:
+    elif zadanie == 6:
+        print("Структура данных товары")
+        count = int(input("Введите количество записей в структуре: "))
+        struct = []
+        number = 1
+        while count >= number:
+            name = input('Введите название товара: ')
+            price = input('Введите цену товара: ')
+            lot = input('Введите количество товара: ')
+            unit = input('Введите единицу измерения товара: ')
+            new_dict = {'Название': name, 'цена': price, 'количество': lot, 'ед': unit}
+            struct.append((number, new_dict))
+            number += 1
+        name = []
+        price = []
+        lot = []
+        unit = []
+        print("Структура: ", struct)
+        for item in struct:
+            name.append(item[1].get('Название'))
+            price.append(item[1].get('цена'))
+            lot.append(item[1].get('количество'))
+            unit.append(item[1].get('ед'))
+        unit = list(set(unit))
+        name = list(set(name))
+        lot = list(set(lot))
+        price = list(set(price))
+        my_dict = {'Название': name, 'цена': price, 'количество': lot, 'ед': unit}
+        print("Словарь: ", my_dict)
     elif zadanie == 0:
         main = zadanie
     else:
