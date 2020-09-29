@@ -5,3 +5,4 @@ script, first, second, third = argv
 
 zarplata = int(first) * int(second) + int(third)
 print("Sallary = ", zarplata)
+

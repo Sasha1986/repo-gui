@@ -3,6 +3,7 @@
 from sys import argv
 from itertools import count
 
+
 script, first  = argv
 
 for el in count(int(first)):

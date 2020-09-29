@@ -1,6 +1,7 @@
 from random import randint
 from functools import reduce
 
+
 def my_func(num_1, num_2):
     return num_1 * num_2
 
