@@ -1,3 +1,5 @@
+from random import randint
+
 while True:
     zadanie = int(input("\nВведите номер задания, для выхода введите 0: "))
     print("")
@@ -30,7 +32,7 @@ while True:
                 print(f"В строке {line_num} количетсво слов: {word_num}.")
             print(f"Количество строк в файле: {line_num}.")
     elif zadanie == 3:
-        print("3. Создать текстовый файл (не программно), построчно записать фамилии сотрудников и величину их окладов.\n"
+        print("Задание 3: Создать текстовый файл (не программно), построчно записать фамилии сотрудников и величину их окладов.\n"
               " Определить, кто из сотрудников имеет оклад менее 20 тыс., вывести фамилии этих сотрудников.\n"
               "Выполнить подсчет средней величины дохода сотрудников.")
         print("Оклад менее 20000 имеют: ")
@@ -45,7 +47,7 @@ while True:
                     print(words[0])
         print(f"Средняя зарплата: {salary / number}")
     elif zadanie == 4:
-        print("4. Создать (не программно) текстовый файл со следующим содержимым:\n"
+        print("Задание 4: Создать (не программно) текстовый файл со следующим содержимым:\n"
               "One — 1\n"
               "Two — 2\n"
               "Three — 3\n"
@@ -69,8 +71,29 @@ while True:
                             new_line.append("Четыре")
                         else:
                             new_line.append(f' {word}')
-                        print(new_line)
                     file_new.writelines(new_line)
+    elif zadanie == 5:
+        print("Задание 5: Создать (программно) текстовый файл, записать в него программно набор чисел,\n"
+              "разделенных пробелами. Программа должна подсчитывать сумму чисел в файле и выводить ее на экран.")
+        numbers = []
+        item = 0
+        summ = 0
+        while item < 10:
+            if item == 9:
+                numbers.append(f"{randint(1, 1000)}")
+            else:
+                numbers.append(f"{randint(1,1000)} ")
+            item += 1
+        with open("test5.txt", "w") as file:
+            file.writelines(numbers)
+        with open("test5.txt", "r") as file:
+            for line in file:
+                words = line.split(" ")
+                for word in words:
+                    num = int(word)
+                    summ += num
+        print("Сумма чисел в файле: ", summ)
+
 
 
 
