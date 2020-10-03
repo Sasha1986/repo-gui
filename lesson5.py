@@ -44,6 +44,33 @@ while True:
                 if int(words[1]) < 20000:
                     print(words[0])
         print(f"Средняя зарплата: {salary / number}")
+    elif zadanie == 4:
+        print("4. Создать (не программно) текстовый файл со следующим содержимым:\n"
+              "One — 1\n"
+              "Two — 2\n"
+              "Three — 3\n"
+              "Four — 4\n"
+              "Необходимо написать программу, открывающую файл на чтение и считывающую построчно данные.\n"
+              "При этом английские числительные должны заменяться на русские.\n"
+              "Новый блок строк должен записываться в новый текстовый файл.")
+        with open("zadanie4_new.txt", "w") as file_new:
+            with open("zadanie4.txt") as file:
+                for line in file:
+                    words = line.split(" ")
+                    new_line = []
+                    for word in words:
+                        if word == "One":
+                            new_line.append("Один")
+                        elif word == "Two":
+                            new_line.append("Два")
+                        elif word == "Three":
+                            new_line.append("Три")
+                        elif word == "Four":
+                            new_line.append("Четыре")
+                        else:
+                            new_line.append(f' {word}')
+                        print(new_line)
+                    file_new.writelines(new_line)
 
 
 
