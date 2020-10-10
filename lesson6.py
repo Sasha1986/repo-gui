@@ -1,4 +1,5 @@
 import time
+from random import randint
 
 while True:
     zadanie = int(input("\nВведите номер задания, для выхода введите 0: "))
@@ -78,3 +79,114 @@ while True:
         men_2.get_total_income()
         men_3.get_full_name()
         men_3.get_total_income()
+    elif zadanie == 4:
+        print("Задание 4: Реализуйте базовый класс Car. У данного класса должны быть следующие атрибуты:\n"
+              "speed, color, name, is_police (булево). А также методы: go, stop, turn(direction),\n"
+              "которые должны сообщать, что машина поехала, остановилась, повернула (куда).\n"
+              "Опишите несколько дочерних классов: TownCar, SportCar, WorkCar, PoliceCar.\n"
+              "Добавьте в базовый класс метод show_speed, который должен показывать текущую скорость автомобиля.\n"
+              "Для классов TownCar и WorkCar переопределите метод show_speed.\n"
+              "При значении скорости свыше 60 (TownCar) и 40 (WorkCar) должно выводиться сообщение о превышении\n"
+              "скорости.\n"
+              "Создайте экземпляры классов, передайте значения атрибутов. Выполните доступ к атрибутам,\n"
+              "выведите результат. Выполните вызов методов и также покажите результат.")
+        class Car:
+            def __init__(self, speed, color, name, is_police=False):
+                self.speed = speed
+                self.color = color
+                self.name = name
+                self.is_police = is_police
+            def go(self):
+                if self.speed > 0:
+                    print("Машина поехала")
+            def stop(self):
+                if self.speed == 0:
+                    print("Машина остановилась")
+            def turn(self):
+                where_turn = randint(1,2)
+                if self.speed == 0:
+                    print("Maшина стоит")
+                else:
+                    if where_turn == 1:
+                        print("Машина повернула направо")
+                    elif where_turn == 2:
+                        print("Машина повернула налево")
+                    elif where_turn == 3:
+                        print("Машина едет задом")
+                    else:
+                        print("Машина движется прямо")
+            def show_speed(self):
+                print(f"Текущая скорость: автомбиля {self.name} - {self.speed}км/ч")
+        class TownCar(Car):
+            def show_speed(self):
+                super().show_speed()
+                if self.speed > 60:
+                    print("Скорость превышена")
+        class SportCar(Car):
+            pass
+        class WorkCar(Car):
+            def show_speed(self):
+                super().show_speed()
+                if self.speed > 40:
+                    print("Скорость превышена")
+        class PoliceCar(Car):
+            pass
+
+        car_1 = TownCar(61,"white",'Audi')
+        car_11 = TownCar(50,"red","Mersedes")
+        car_12 = TownCar(0,"blue","Lada")
+        car_2 = SportCar(120,"black","Ferrari")
+        car_3 = WorkCar(45,"yellow","Fiat")
+        car_31 = WorkCar(35,"grenn","Skania")
+        car_4 = PoliceCar(70,"white-blue","УАЗ",True)
+
+        print(car_1.speed)
+        print(car_2.color)
+        print(car_3.name)
+        print(car_4.is_police)
+        print(car_11.is_police)
+        car_3.show_speed()
+        car_31.show_speed()
+        car_1.show_speed()
+        car_11.show_speed()
+        car_4.show_speed()
+        car_1.go()
+        car_12.go()
+        car_1.stop()
+        car_12.stop()
+        car_1.turn()
+        car_12.turn()
+    elif zadanie == 5:
+        print("Задание 5: Реализовать класс Stationery (канцелярская принадлежность).\n"
+              "Определить в нем атрибут title (название) и метод draw (отрисовка).\n"
+              "Метод выводит сообщение “Запуск отрисовки.”\n"
+              "Создать три дочерних класса Pen (ручка), Pencil (карандаш), Handle (маркер).\n"
+              "В каждом из классов реализовать переопределение метода draw. Для каждого из классов методы\n"
+              "должен выводить уникальное сообщение. Создать экземпляры классов и проверить, что выведет\n"
+              "описанный метод для каждого экземпляра.")
+        class Stationery:
+            def __init__(self, title=None):
+                self.title = title
+            def draw(self):
+                print("Запуск отрисовки")
+        class Pen(Stationery):
+            def draw(self):
+                print("Отрисовка ручкой")
+        class Pencil(Stationery):
+            def draw(self):
+                print("Отрисовка карандашом")
+        class Handle(Stationery):
+            def draw(self):
+                print("Отрисовка маркером")
+
+        stationery_1 = Stationery()
+        stationery_2 = Pen()
+        stationery_3 = Pencil()
+        stationery_4 = Handle()
+
+        stationery_1.draw()
+        stationery_2.draw()
+        stationery_3.draw()
+        stationery_4.draw()
+
+
