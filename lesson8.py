@@ -1,5 +1,6 @@
 def days(day, num_day):
     """вспомогательная функция определяющая какое из двух чисел больше"""
+    
     if day > num_day:
         return num_day
     else:
